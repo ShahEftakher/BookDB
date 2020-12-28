@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { getBooksByTerm } from "./api/GoogleBooks";
+import BookList from "./components/BookList";
+import Searchbar from "./components/SearchBar";
 
-function App() {
+const App = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [books, setBooks] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    await getBooksByTerm(searchTerm, setBooks, currentPage, setTotalPages);
+  };
+
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+    console.log(searchTerm);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Searchbar handleChange={handleChange} handleSubmit={handleSubmit} />
+      <BookList books={books} />
     </div>
   );
-}
+};
 
 export default App;
