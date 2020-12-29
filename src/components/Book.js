@@ -2,9 +2,8 @@ import react from "react";
 import { Link } from "react-router-dom";
 
 const Book = (props) => {
-    console.log(props.data.volumeInfo.imageLinks);
+  console.log(props);
   const ImageURL = props.data.volumeInfo.imageLinks.thumbnail;
-  console.log(props.data.volumeInfo.imageLinks == undefined);
   return (
     <div className="col s12 m4">
       <div className="card">
@@ -30,7 +29,7 @@ const Book = (props) => {
           <Link
             to={{
               pathname: "/Book/" + props.data.id,
-              Book_id: props.data.id,
+              details: props.data.volumeInfo,
             }}
           >
             See Details
