@@ -8,7 +8,6 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [books, setBooks] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [totalPages, setTotalPages] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
 
   const handleSubmit = async (event) => {
