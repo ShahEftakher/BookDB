@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getBooksByTerm } from "./api/GoogleBooks";
+import { getBooksByTerm, getBooksByTermSorted } from "./api/GoogleBooks";
 import BookList from "./components/BookList";
 import Pagination from "./components/Pagination";
 import Searchbar from "./components/SearchBar";
@@ -16,25 +16,56 @@ const App = () => {
     await getBooksByTerm(searchTerm, setBooks, currentIndex, setTotalItems);
   };
 
+  const handleSortRelevance = async (event) => {
+    event.preventDefault();
+    await getBooksByTermSorted(
+      searchTerm,
+      setBooks,
+      currentIndex,
+      setTotalItems,
+      "relevance"
+    );
+  };
+
+  const handleSortNewest = async (event) => {
+    event.preventDefault();
+    await getBooksByTermSorted(
+      searchTerm,
+      setBooks,
+      currentIndex,
+      setTotalItems,
+      "newest"
+    );
+  };
+
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  const nextPage = async (index) =>{
+  const nextPage = async (index) => {
     setCurrentIndex(index);
     await getBooksByTerm(searchTerm, setBooks, currentIndex, setTotalItems);
-  }
+  };
   console.log(totalItems);
 
   return (
     <div>
-      <Searchbar handleChange={handleChange} handleSubmit={handleSubmit} /> 
+      <Searchbar
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        handleSortRelevance={handleSortRelevance}
+        handleSortNewest={handleSortNewest}
+      />
       <BookList books={books} />
-      {totalItems>20 ? (<Pagination 
-        nextPage={nextPage}
-        currentIndex={currentIndex}
-        totalItems={totalItems}
-        />):("")}
+      {totalItems > 20 ? (
+        <Pagination
+          nextPage={nextPage}
+          currentIndex={currentIndex}
+          totalItems={totalItems}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

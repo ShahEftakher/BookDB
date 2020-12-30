@@ -1,6 +1,5 @@
 import React from "react";
 
-
 const Searchbar = (props) => {
   return (
     <div className="container">
@@ -13,14 +12,12 @@ const Searchbar = (props) => {
                 type="text"
                 onChange={props.handleChange}
               />
-              <section className="col s8 offset-s9">
-                <a className="waves-effect waves-light btn">
-                  Sort By Relevance
-                </a>
-                <a className="waves-effect waves-light btn"> Sort By Newest </a>
-              </section>
             </div>
           </form>
+        </section>
+        <section className="col s6 offset-s6">
+          <button onClick={props.handleSortRelevance}>Sort by Relevance</button>
+          <button onClick={props.handleSortNewest}>Sort by newest</button>
         </section>
       </div>
     </div>
