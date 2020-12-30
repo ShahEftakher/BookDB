@@ -2,7 +2,6 @@ import react from "react";
 import { Link } from "react-router-dom";
 
 const Book = (props) => {
-  console.log(props);
   const ImageURL = props.data.volumeInfo.imageLinks.thumbnail;
   return (
     <div className="col s12 m4">

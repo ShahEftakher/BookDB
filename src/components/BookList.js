@@ -1,7 +1,7 @@
 import React from "react";
 import Book from "./Book";
 
-const BookList = (props) => {
+const BookList = props => {
   return (
     <div className="container">
       <div className="row">

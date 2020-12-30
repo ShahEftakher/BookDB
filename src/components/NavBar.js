@@ -7,7 +7,7 @@ const Navbar = () => {
       <nav>
         <div className="nav-wrapper">
           <Link to="/" className="brand-logo" style={{ marginLeft: 20 }}>
-            Book Store
+            Book Finder
             </Link>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>

@@ -1,24 +1,26 @@
 import axios from "axios";
 
 const GBooks = axios.create({
-  baseURL: "https://www.googleapis.com/books/v1",
+  baseURL: "https://www.googleapis.com/books/v1/volumes",
 });
 
-const getBooksByTerm = (SearchTerm, setBooks, page_number, setTotalPages) => {
-  GBooks.get( '/volumes/',{
+const getBooksByTerm = (SearchTerm, setBooks, start_index, setTotalItems) => {
+  GBooks.get( '/',{
     params: {
       q: SearchTerm.replace(/ /g, '+'),
       key: "AIzaSyDx5kOz0r6kX3vfZiC49Tc2_d78M5aTxeE",
-      maxResults: 20
+      maxResults: 20,
+      startIndex: start_index
     },
   }).then((response) => {
+    //console.log(response.data);
     setBooks(response.data.items);
-    //setTotalPages(response.data.total_pages);
+    setTotalItems(response.data.totalItems);
   });
 };
 
 const getBooksDetails = (bookID, setCurrentBook) => {
-  GBooks.get("/volumes/" + bookID, {
+  GBooks.get("/" + bookID, {
     params: {
       api_key: "AIzaSyDx5kOz0r6kX3vfZiC49Tc2_d78M5aTxeE",
     },

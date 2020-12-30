@@ -3,7 +3,6 @@ import { getBooksDetails } from "./../api/GoogleBooks";
 import { Link } from "react-router-dom";
 
 const BookDetails = (props) => {
-  console.log(props);
   const [currentBook, setCurrentBook] = useState({});
 
   useEffect(() => {
