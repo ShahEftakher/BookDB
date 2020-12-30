@@ -13,7 +13,6 @@ const getBooksByTerm = (SearchTerm, setBooks, start_index, setTotalItems) => {
       startIndex: start_index
     },
   }).then((response) => {
-    //console.log(response.data);
     setBooks(response.data.items);
     setTotalItems(response.data.totalItems);
   });
@@ -29,7 +28,6 @@ const getBooksByTermSorted = (SearchTerm, setBooks, start_index, setTotalItems, 
       orderBy: sort_by
     },
   }).then((response) => {
-    //console.log(response.data);
     setBooks(response.data.items);
     setTotalItems(response.data.totalItems);
   });

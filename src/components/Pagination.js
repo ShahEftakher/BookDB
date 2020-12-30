@@ -1,7 +1,6 @@
-import Reacrt from "react";
+import React from "react";
 
 const Pagination = (props) => {
-    console.log(props);
     const totalPages=props.totalItems/20;
     const page_links = [];
     for (let i = 1, index=0; i <= totalPages; i++, index=index+20) {

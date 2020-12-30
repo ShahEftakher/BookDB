@@ -1,3 +1,14 @@
+# LAB 5 
+
+Book finder webapp with google books api.
+
+## Implemented features:
+
+1. Book search
+2. Pagination
+3. Book details
+4. Sorting
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
